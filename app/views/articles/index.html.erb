@@ -6,10 +6,12 @@
     <th>Text</th>
   </tr>
   <% @articles.each do |article| %>
-    <tr>
-      <td><%= article.title %></td>
-      <td><%= article.text %></td>
-      <td><%= link_to 'Show', article_path(article) %></td>
-    </tr>
+    <% unless article.archived? %>
+      <tr>
+        <td><%= article.title %></td>
+        <td><%= article.text %></td>
+        <td><%= link_to 'Show', article_path(article) %></td>
+      </tr>
+    <% end %>
   <% end %>
 </table>
